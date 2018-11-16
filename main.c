@@ -13,8 +13,8 @@ int main(){
   float **matriz;
   float w; //w=weight
 
-  printf("Digite o nome do arquivo a ser aberto: ");
-  scanf("%s", nomeArq);
+  printf("Digite o nome do arquivo a ser aberto: "); //arquivo grafo alterado, removido os vértices e está somente com as arestas
+  scanf("%s", nomeArq);                             //é necessário definir a quantidade de vértices do grafo
 
   arq=fopen(nomeArq, "r");
 
@@ -26,9 +26,8 @@ int main(){
     scanf("%d", &nVertices);
 
     matriz = alocmat(nVertices, nVertices);
-    printf("\npassei alocmat\n");
 
-    for(i=0;i<nVertices;i++){
+    for(i=0;i<nVertices;i++){     //inicializa os pesos das arestas como infinito e o caminho de um vertice para ele mesmo é 0
       for(j=0;j<nVertices;j++){
         if(i==j){
           matriz[i][j]=0;
@@ -38,15 +37,11 @@ int main(){
       }
     }
 
-    while(fscanf(arq, "%d %d %f", &i, &j, &w) != EOF){
-      printf("\ni=%d, j=%d, w=%.2f\n", i,j,w);
+    while(fscanf(arq, "%d %d %f", &i, &j, &w) != EOF){    //preenche a matriz com os valores do arquivo
       matriz[i-1][j-1]=w;
     }
-    printf("\npassei while\n");
 
     printf("\n");
-
-    printf("%f\n", matriz[499][499]);
 
     for(i=0;i<nVertices;i++){
       for(j=0;j<nVertices;j++){
