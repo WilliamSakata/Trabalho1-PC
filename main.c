@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<pthread.h>
 
+#define infinity 99999.99
+
 float **alocmat(int lin, int col);
 
 int main(){
@@ -26,7 +28,15 @@ int main(){
     matriz = alocmat(nVertices, nVertices);
     printf("\npassei alocmat\n");
 
-    printf("\ni=%d, j=%d, w=%.2f\n", i,j,w);
+    for(i=0;i<nVertices;i++){
+      for(j=0;j<nVertices;j++){
+        if(i==j){
+          matriz[i][j]=0;
+        }else{
+          matriz[i][j]= infinity;
+        }
+      }
+    }
 
     while(fscanf(arq, "%d %d %f", &i, &j, &w) != EOF){
       printf("\ni=%d, j=%d, w=%.2f\n", i,j,w);
@@ -44,6 +54,8 @@ int main(){
       }
       printf("\n");
     }
+
+
 
   }
   free(matriz);
