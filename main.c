@@ -19,9 +19,9 @@ int main(){
   float **matriz;
   float w; //w=weight
 
-  printf("Digite o nome do arquivo a ser aberto: "); //arquivo grafo alterado, removido os vértices e está
-  scanf("%s", nomeArq);                             //somente com as arestas é necessário definir a quantidade
-                                                    //de vértices do grafo
+  printf("Digite o nome do arquivo a ser aberto: ");
+  scanf("%s", nomeArq);
+
   arq=fopen(nomeArq, "r");
 
   if(arq==NULL){
@@ -29,21 +29,18 @@ int main(){
     exit(1);
   }else{
 
-    fgets(linArq,20,arq);
-    printf("linArq = %s\n", linArq);
 
     fgets(linArq,20,arq);
-    printf("linArq = %s\n", linArq);
+    printf("%s",linArq);
 
-    nVertices = atoi(linArq);
-    printf("nVertices = %d\n", nVertices);
-/*
-    while(linArq != "#arestas"||linArq != 500){
-      printf("linArq = %s", linArq);
-      fgets(linArq, 20, arq);
-      nVertices = (int)linArq;
+    fgets(linArq,20,arq);
+
+    while(linArq != 'arestas'){
+      nVertices = atoi(linArq);
+      fgets(linArq,20,arq);
     }
-*/
+
+
     matriz = alocmat(nVertices, nVertices);
 
     inicializaMat(matriz,nVertices); //inicializa matriz com a diagonal principal = 0 e o resto com infinito
